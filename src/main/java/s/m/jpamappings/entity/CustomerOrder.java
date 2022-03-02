@@ -1,6 +1,7 @@
 package s.m.jpamappings.entity;
 
 import lombok.Data;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -20,4 +21,5 @@ public class CustomerOrder {
 
     @OneToMany(mappedBy = "customerOrder", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Item> items = new ArrayList<>();
+    
 }

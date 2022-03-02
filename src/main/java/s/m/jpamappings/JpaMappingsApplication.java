@@ -43,7 +43,15 @@ public class JpaMappingsApplication {
 		order.getItems().add(iPhone);
 	}
 
-	@Scheduled(fixedRate = 30_000, initialDelay = 10000)
+	@Scheduled(fixedRate = 30_000,initialDelay = 3000)
+	@Transactional
+	public void updateItem(){
+		log.info("updating an item in the order..");
+		CustomerOrder order = orderRepo.findById(1L).orElse(null);
+		order.getItems().get(0).setName(order.getItems().get(0).getName()+" - updated");
+	}
+
+	//@Scheduled(fixedRate = 30_000, initialDelay = 10000)
 	@Transactional
 	public void removeItemFromOrder(){
 		log.info("removing an item order..");

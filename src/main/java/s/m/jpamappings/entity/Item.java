@@ -2,6 +2,7 @@ package s.m.jpamappings.entity;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
 
@@ -14,6 +15,7 @@ public class Item {
     @Column(name = "id", nullable = false)
     private Long id;
 
+    @ToString.Exclude
     @ManyToOne
     @JoinColumn(name = "customer_order_id")
     private CustomerOrder customerOrder;
